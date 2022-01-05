@@ -5,20 +5,18 @@ config:
 spring:
   profiles:
     active: dev
-  include:
-    - swagger
   datasource:
     url: jdbc:postgresql://localhost:5432/booking
     username: postgres
     password: password
     initialization-mode: always
   jpa:
-    database-platform: org.hibernate.dialect.PosgreSQLDialect
+    database-platform: org.hibernate.dialect.PostgreSQLDialect
     show-sql: true
     hibernate:
       ddl-auto: create-drop
     properties:
-      hibernate.default_schema: booking
+      hibernate.default_schema: bookings
   servlet:
     multipart:
       max-request-size: 4MB
