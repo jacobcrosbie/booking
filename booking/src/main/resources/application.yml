@@ -1,0 +1,26 @@
+config:
+  hmac:
+    appkey: booking
+
+spring:
+  profiles:
+    active: dev
+  include:
+    - swagger
+  datasource:
+    url: jdbc:postgresql://localhost:5432/booking
+    username: postgres
+    password: password
+    initialization-mode: always
+  jpa:
+    database-platform: org.hibernate.dialect.PosgreSQLDialect
+    show-sql: true
+    hibernate:
+      ddl-auto: create-drop
+    properties:
+      hibernate.default_schema: booking
+  servlet:
+    multipart:
+      max-request-size: 4MB
+      max-file-size: 4MB
+
