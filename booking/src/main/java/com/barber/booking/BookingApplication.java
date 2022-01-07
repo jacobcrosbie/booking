@@ -10,7 +10,7 @@ import javax.annotation.PostConstruct;
 @SpringBootApplication
 public class BookingApplication {
 
-	@Value("${stripe.api.key")
+	@Value("${stripe.api.key}")
 	private String stripeApiKey;
 
 	@PostConstruct

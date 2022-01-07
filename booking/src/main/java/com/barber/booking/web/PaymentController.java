@@ -14,7 +14,6 @@ import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin("*")
-
 public class PaymentController {
 
     @PostMapping("/create-payment-intent")
@@ -80,7 +79,7 @@ public class PaymentController {
         switch (event.getType()) {
             case "payment_intent.succeeded":// user paid something
                 PaymentIntent paymentIntent = (PaymentIntent) stripeObject;
-                System.out.println("Payment for " + paymentIntent.getAmount() + " succeeded.");
+                System.out.println("Payment for " + paymentIntent.getId() + ", amount " +  paymentIntent.getAmount() + " succeeded.");
                 // Then define and call a method to handle the successful payment intent.
                 // handlePaymentIntentSucceeded(paymentIntent);
                 break;
