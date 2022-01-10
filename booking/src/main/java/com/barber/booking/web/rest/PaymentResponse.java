@@ -1,20 +1,18 @@
-package com.barber.booking.web;
+package com.barber.booking.web.rest;
 
-import com.barber.booking.dto.CreatePayment;
-import com.barber.booking.dto.CreatePaymentResponse;
+import com.barber.booking.service.dto.CreatePayment;
+import com.barber.booking.service.dto.CreatePaymentResponse;
 import com.stripe.exception.SignatureVerificationException;
 import com.stripe.exception.StripeException;
 import com.stripe.model.*;
 import com.stripe.net.Webhook;
 import com.stripe.param.PaymentIntentCreateParams;
 import org.springframework.beans.factory.annotation.Value;
-import org.springframework.http.HttpStatus;
-import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
 @RestController
 @CrossOrigin("*")
-public class PaymentController {
+public class PaymentResponse {
 
     @PostMapping("/create-payment-intent")
     public CreatePaymentResponse createPaymentIntent(@RequestBody CreatePayment createPayment) throws StripeException {

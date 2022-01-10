@@ -1,4 +1,4 @@
-package com.barber.booking.dto;
+package com.barber.booking.service.dto;
 
 import lombok.Getter;
 import lombok.Setter;
