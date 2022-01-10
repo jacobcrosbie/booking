@@ -1,19 +1,13 @@
-package com.barber.booking.domain;
-
+package com.barber.booking.service.dto;
 
 import com.barber.booking.utility.HaircutEnums;
 import lombok.Getter;
 import lombok.Setter;
 
-import javax.persistence.*;
-
 @Getter
 @Setter
-@Entity
-public class Haircut {
+public class HaircutResponse {
 
-    @Id
-    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer haircutId;
     private HaircutEnums type;
     private Integer price;

@@ -1,10 +1,11 @@
 package com.barber.booking.domain;
 
-import com.barber.booking.utility.BookingEnums;
+import com.barber.booking.utility.HaircutEnums;
 import lombok.Getter;
 import lombok.Setter;
 
 import javax.persistence.*;
+import java.time.LocalDateTime;
 import java.util.Date;
 
 
@@ -14,13 +15,19 @@ import java.util.Date;
 public class Bookings {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
-    private Long id;
-
+    private Long bookingId;
     private Long userId;
-    private String barber;
-    private BookingEnums.HaircutTypeEnum type;
-    private Date startDate;
-    private Date endTime;
+
+    @ManyToOne
+    @JoinColumn(name ="barber_id")
+    private Barber barber;
+
+    @ManyToOne
+    @JoinColumn(name = "haircut_id")
+    private Haircut haircut;
+
+    private LocalDateTime startTime;
+    private LocalDateTime endTime;
 
 
 
