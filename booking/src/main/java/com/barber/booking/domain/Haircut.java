@@ -15,6 +15,7 @@ public class Haircut {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer haircutId;
+    @Enumerated(EnumType.STRING)
     private HaircutEnums type;
     private Integer price;
     private Integer duration;
