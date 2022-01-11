@@ -26,8 +26,8 @@ public class Bookings {
     @JoinColumn(name = "haircut_id")
     private Haircut haircut;
 
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
+    private Date startTime;
+    private Date endTime;
 
 
 

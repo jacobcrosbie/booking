@@ -18,7 +18,6 @@ import java.util.List;
 @RequiredArgsConstructor
 public class BookingsServiceImpl implements BookingsService {
 
-    @Autowired
     private final BookingsRepository bookingsRepository;
 
     public List<BookingsResponse> findByUserId(Long user) {

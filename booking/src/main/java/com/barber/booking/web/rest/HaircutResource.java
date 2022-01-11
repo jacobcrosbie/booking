@@ -2,24 +2,25 @@ package com.barber.booking.web.rest;
 
 import com.barber.booking.domain.Haircut;
 import com.barber.booking.repository.HaircutRepository;
+import com.barber.booking.service.HaircutService;
+import com.barber.booking.service.dto.HaircutRequest;
+import com.barber.booking.service.dto.HaircutResponse;
 import lombok.RequiredArgsConstructor;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RestController
 @RequiredArgsConstructor
-@RequestMapping("/api")
+@RequestMapping("/api/haircut")
 public class HaircutResource {
 
-    @Autowired
-    public HaircutRepository haircutRepository;
+    private final HaircutService haircutService;
 
-    @GetMapping("/haircut")
-    public List<Haircut> findAll(){
-        return haircutRepository.findAll();
+    @PostMapping("/create")
+    public HaircutResponse createHaircut(@RequestBody HaircutRequest haircutRequest){
+        return haircutService.createHaircut(haircutRequest);
+
     }
 }
