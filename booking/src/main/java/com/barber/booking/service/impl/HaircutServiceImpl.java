@@ -6,6 +6,7 @@ import com.barber.booking.service.HaircutService;
 import com.barber.booking.service.dto.HaircutRequest;
 import com.barber.booking.service.dto.HaircutResponse;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 
 
@@ -17,18 +18,12 @@ public class HaircutServiceImpl implements HaircutService {
 
     public HaircutResponse createHaircut(HaircutRequest haircutRequest) {
 
-        Haircut haircut = new Haircut();
-        haircut.setDuration(haircutRequest.getDuration());
-        haircut.setPrice(haircutRequest.getPrice());
-        haircut.setType(haircutRequest.getType());
-
+        ModelMapper modelMapper = new ModelMapper();
+        Haircut haircut = modelMapper.map(haircutRequest,Haircut.class);
         haircut = haircutRepository.save(haircut);
 
-        HaircutResponse haircutResponse = new HaircutResponse();
-        haircutResponse.setHaircutId(haircut.getHaircutId());
-        haircutResponse.setType(haircut.getType());
-        haircutResponse.setPrice(haircut.getPrice());
-        haircutResponse.setDuration(haircut.getDuration());
+        ModelMapper modelMapper1 = new ModelMapper();
+        HaircutResponse haircutResponse = modelMapper1.map(haircut,HaircutResponse.class);
 
         return haircutResponse;
 

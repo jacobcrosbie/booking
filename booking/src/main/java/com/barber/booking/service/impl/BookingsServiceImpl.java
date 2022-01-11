@@ -8,6 +8,7 @@ import com.barber.booking.service.dto.BookingsRequest;
 import com.barber.booking.service.dto.BookingsResponse;
 import com.barber.booking.service.dto.HaircutResponse;
 import lombok.RequiredArgsConstructor;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -24,25 +25,9 @@ public class BookingsServiceImpl implements BookingsService {
         List<BookingsResponse> bookingsResponses = new ArrayList<>();
         List<Bookings> bookingsForUser = bookingsRepository.findByUserId(user);
         bookingsForUser.forEach(booking -> {
-            BookingsResponse bookingsResponse = new BookingsResponse();
-            bookingsResponse.setBookingId(booking.getBookingId());
 
-            BarberResponse barberResponse = new BarberResponse();
-            barberResponse.setBarberId(booking.getBarber().getBarberId());
-            barberResponse.setName(booking.getBarber().getName());
-            bookingsResponse.setBarber(barberResponse);
-
-            HaircutResponse haircutResponse = new HaircutResponse();
-            haircutResponse.setHaircutId(booking.getHaircut().getHaircutId());
-            haircutResponse.setType(booking.getHaircut().getType());
-            haircutResponse.setDuration(booking.getHaircut().getDuration());
-            haircutResponse.setPrice(booking.getHaircut().getPrice());
-            bookingsResponse.setHaircut(haircutResponse);
-
-
-            bookingsResponse.setStartTime(booking.getStartTime());
-            bookingsResponse.setEndTime(booking.getEndTime());
-
+            ModelMapper modelMapper = new ModelMapper();
+            BookingsResponse bookingsResponse = modelMapper.map(booking,BookingsResponse.class);
             bookingsResponses.add(bookingsResponse);
         });
         return bookingsResponses;
