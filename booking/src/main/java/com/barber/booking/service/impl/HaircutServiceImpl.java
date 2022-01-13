@@ -31,7 +31,6 @@ public class HaircutServiceImpl implements HaircutService {
         haircut = haircutRepository.save(haircut);
         ModelMapper modelMapper1 = new ModelMapper();
         return modelMapper1.map(haircut, HaircutResponse.class);
-
     }
 
     public HaircutResponse getHaircutDetails(String type) throws HaircutException {
@@ -39,7 +38,6 @@ public class HaircutServiceImpl implements HaircutService {
         Haircut haircut = optional.orElseThrow(() -> new HaircutException("Service.HAIRCUT_TYPE_DOES_NOT_EXIST"));
         ModelMapper modelMapper = new ModelMapper();
         return modelMapper.map(haircut, HaircutResponse.class);
-
     }
 
     public List<HaircutResponse> getAllHaircuts() {

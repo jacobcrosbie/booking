@@ -38,7 +38,6 @@ public class HaircutResource {
         return new ResponseEntity<>(haircutService.updateHaircutDetails(haircutRequest),HttpStatus.OK);
     }
 
-
     @DeleteMapping("/delete/{type}")
     public ResponseEntity<String> deleteHaircut(@PathVariable String type) throws HaircutException {
         return new ResponseEntity<>(haircutService.deleteHaircut(type),HttpStatus.OK);
