@@ -9,5 +9,3 @@ INSERT INTO booking.bookings(
 	booking_id, barber_id, end_time, start_time, haircut_id, user_id)
 	VALUES (1,1,'2021-10-10','2021-10-10',null, 1);
 
-
------
