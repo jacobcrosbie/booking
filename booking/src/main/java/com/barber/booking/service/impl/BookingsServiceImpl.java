@@ -1,6 +1,7 @@
 package com.barber.booking.service.impl;
 
 import com.barber.booking.domain.Bookings;
+import com.barber.booking.domain.Haircut;
 import com.barber.booking.repository.BookingsRepository;
 import com.barber.booking.service.BookingsService;
 import com.barber.booking.service.dto.BarberResponse;
@@ -84,6 +85,9 @@ public class BookingsServiceImpl implements BookingsService {
 
         //use model mapper
         bookings.setUserId(bookingsRequest.getUserId());
+        ModelMapper modelMapper = new ModelMapper();
+        Haircut haircut = modelMapper.map(haircutRequest, Haircut.class);
+        haircut = haircutRepository.save(haircut);
         //bookings.setBarber(bookingsRequest.getBarber());
         //bookings.getHaircut(bookingsRequest.getHaircut());
 
