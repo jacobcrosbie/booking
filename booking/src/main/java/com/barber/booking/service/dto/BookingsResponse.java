@@ -13,9 +13,10 @@ import java.util.Date;
 public class BookingsResponse {
 
     private Long bookingId;
+    private Long userId;
     private BarberResponse barber;
     private HaircutResponse haircut;
-    private LocalDateTime startTime;
-    private LocalDateTime endTime;
+    private String startTime;
+    private String endTime;
 
 }

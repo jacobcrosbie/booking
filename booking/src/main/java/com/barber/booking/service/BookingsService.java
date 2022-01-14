@@ -9,4 +9,6 @@ public interface BookingsService {
     List<BookingsResponse> findByUserId(Long user);
 
     List<Bookings> findAll();
+
+    List<BookingsResponse> findByBarberAndDate(Long barberId, String dateTime);
 }

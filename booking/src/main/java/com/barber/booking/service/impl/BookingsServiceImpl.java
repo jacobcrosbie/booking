@@ -41,8 +41,7 @@ public class BookingsServiceImpl implements BookingsService {
             bookingsResponse.setHaircut(haircutResponse);
 
 
-            bookingsResponse.setStartTime(booking.getStartTime());
-            bookingsResponse.setEndTime(booking.getEndTime());
+            bookingsResponse.setStartTime(booking.getStartTime().toString());
 
             bookingsResponses.add(bookingsResponse);
         });
@@ -51,5 +50,42 @@ public class BookingsServiceImpl implements BookingsService {
 
     public List<Bookings> findAll(){
         return bookingsRepository.findAll();
+    }
+
+    public List<BookingsResponse> findByBarberAndDate(Long barberId, String dateTime){
+        List<BookingsResponse> bookingsResponses = new ArrayList<>();
+        List<Bookings> barberBookings = bookingsRepository.findByBarberAndDate(barberId);
+        barberBookings.forEach(booking -> {
+            BookingsResponse bookingsResponse = new BookingsResponse();
+            bookingsResponse.setBookingId(booking.getBookingId());
+
+            BarberResponse barberResponse = new BarberResponse();
+            barberResponse.setBarberId(booking.getBarber().getBarberId());
+            barberResponse.setName(booking.getBarber().getName());
+            bookingsResponse.setBarber(barberResponse);
+
+            HaircutResponse haircutResponse = new HaircutResponse();
+            haircutResponse.setHaircutId(booking.getHaircut().getHaircutId());
+            haircutResponse.setType(booking.getHaircut().getType());
+            haircutResponse.setDuration(booking.getHaircut().getDuration());
+            haircutResponse.setPrice(booking.getHaircut().getPrice());
+            bookingsResponse.setHaircut(haircutResponse);
+
+
+            bookingsResponse.setStartTime(booking.getStartTime().toString());
+
+            bookingsResponses.add(bookingsResponse);
+        });
+        return bookingsResponses;
+    }
+
+    public void bookHaircut(BookingsRequest bookingsRequest){
+        Bookings bookings = new Bookings();
+
+        //use model mapper
+        bookings.setUserId(bookingsRequest.getUserId());
+        //bookings.setBarber(bookingsRequest.getBarber());
+        //bookings.getHaircut(bookingsRequest.getHaircut());
+
     }
 }
