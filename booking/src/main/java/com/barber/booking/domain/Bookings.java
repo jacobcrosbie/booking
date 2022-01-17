@@ -29,6 +29,15 @@ public class Bookings {
     private LocalDateTime startTime;
     private LocalDateTime endTime;
 
-
-
+    @Override
+    public String toString() {
+        return "Bookings{" +
+                "bookingId=" + bookingId +
+                ", userId=" + userId +
+                ", barber=" + barber +
+                ", haircut=" + haircut +
+                ", startTime=" + startTime +
+                ", endTime=" + endTime +
+                '}';
+    }
 }

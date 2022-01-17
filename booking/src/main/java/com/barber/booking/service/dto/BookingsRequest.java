@@ -3,9 +3,6 @@ package com.barber.booking.service.dto;
 import lombok.Getter;
 import lombok.Setter;
 
-import java.time.LocalDateTime;
-import java.util.Date;
-
 @Getter
 @Setter
 public class BookingsRequest {

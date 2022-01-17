@@ -19,7 +19,7 @@ public class PaymentResponse {
         PaymentIntentCreateParams params =
                 PaymentIntentCreateParams.builder()
                         .setAmount(15 * 100L) // createPayment... what product user want to buy... stripe accepts in pence/cents.. here hardcoding value but can just take from request body
-                        .setCurrency("eur")
+                        .setCurrency("gbp")
                         .setAutomaticPaymentMethods(
                                 PaymentIntentCreateParams.AutomaticPaymentMethods
                                         .builder()
